@@ -10,13 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LoveMyPlanet">
         <activity
-            android:name=".CrearActividadActivity"
+            android:name=".RegistroAuspActivity"
             android:exported="false" />
         <activity
-            android:name=".CrearActividad"
-            android:exported="false"
-            android:label="@string/title_activity_crear_actividad"
-            android:theme="@style/Theme.LoveMyPlanet.NoActionBar" />
+            android:name=".CrearActividadActivity"
+            android:exported="false" />
         <activity
             android:name=".MainMenu"
             android:exported="false"

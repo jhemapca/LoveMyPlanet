@@ -15,7 +15,8 @@ class LoginActivity : AppCompatActivity() {
 
         val etCorreo: EditText=findViewById(R.id.etCorreoLogin)
         val etContra:EditText=findViewById(R.id.etPasswordLogin)
-        val btnCrearCuenta:Button=findViewById(R.id.btnCrearCuenta)
+        val btnCrearCuenta:Button=findViewById(R.id.btnCrearCuentaVol)
+        val btnCrearCuentaAusp:Button=findViewById(R.id.btnCrearCuentaAusp)
         val btnLogin:Button=findViewById(R.id.btnIniciarSesion)
         val dbU = FirebaseAuth.getInstance()
 
