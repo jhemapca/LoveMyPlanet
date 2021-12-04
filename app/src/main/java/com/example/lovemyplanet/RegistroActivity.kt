@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import com.example.lovemyplanet.models.VoluntarioModel
+import com.example.lovemyplanet.ui.fragments.DatePickerFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
@@ -27,6 +28,16 @@ class RegistroActivity : AppCompatActivity() {
         val etnombres: EditText = findViewById(R.id.etNombresReg)
         val etapellidos:EditText = findViewById(R.id.etApellidosReg)
         val btnReg:Button=findViewById(R.id.btnRegistrar)
+
+        fun onDateSelected(day: Int, month: Int, year: Int) {
+            etBirth.setText("$day/$month/$year")
+        }
+        fun showDatePickerDialog() {
+            val datePicker = DatePickerFragment { day, month, year -> onDateSelected(day, month, year) }
+            datePicker.show(supportFragmentManager, "datePicker")
+        }
+        etBirth.setOnClickListener{showDatePickerDialog()}
+
         btnReg.setOnClickListener {
 
             if(etnombres.text.toString().isEmpty()){

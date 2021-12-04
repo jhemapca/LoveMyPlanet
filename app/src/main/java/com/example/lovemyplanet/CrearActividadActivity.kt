@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.lovemyplanet.models.ActividadesFullModel
+import com.example.lovemyplanet.ui.fragments.DatePickerFragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -17,6 +18,8 @@ class CrearActividadActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_actividad)
+
+
         val spnTipo:Spinner=findViewById(R.id.spnTipoAct)
         val txtMaxAforo:EditText=findViewById(R.id.txtMaxPersonasNewAct)
         val txtFecha:EditText=findViewById(R.id.txtFechaNewAct)
@@ -30,6 +33,16 @@ class CrearActividadActivity : AppCompatActivity() {
         val user: FirebaseUser? = dbU.getCurrentUser()
         val idUser:String = user!!.uid
         var Ausp:String =""
+
+        fun onDateSelected(day: Int, month: Int, year: Int) {
+            txtFecha.setText("$day/$month/$year")
+        }
+        fun showDatePickerDialog() {
+            val datePicker = DatePickerFragment { day, month, year -> onDateSelected(day, month, year) }
+            datePicker.show(supportFragmentManager, "datePicker")
+        }
+        txtFecha.setOnClickListener{showDatePickerDialog()}
+
 
         var spnTipoValue="Limpieza de Playa"
         spnTipo.onItemSelectedListener = object:AdapterView.OnItemSelectedListener{
@@ -79,12 +92,13 @@ class CrearActividadActivity : AppCompatActivity() {
 
             db.collection("actividades").document(id.toString()).set(nuevaActi).addOnSuccessListener{
                 Toast.makeText(this,"Se ha registrado Nueva Actividad",Toast.LENGTH_LONG).show()
-                val intent = Intent(this, MainMenu::class.java)
-                startActivity(intent)
+                    val intent = Intent(this, MainMenu::class.java)
+                    startActivity(intent)
             }.addOnFailureListener{
                 Toast.makeText(this,"HA OCURRIDO UN ERROR",Toast.LENGTH_LONG).show()
             }
 
         }
     }
+
 }
