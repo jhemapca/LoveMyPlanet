@@ -8,5 +8,6 @@ data class VoluntarioModel(
     val sexo:String="",
     val correo:String="",
     val contraseña:String="",
-    val puntosPlanet:Int=0
+    val puntosPlanet:Int=0,
+    val rol:Boolean = false
 )

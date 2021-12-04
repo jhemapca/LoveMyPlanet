@@ -8,16 +8,20 @@
 
     <item
         android:id="@+id/navCalendario"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_calendario" />
 
     <item
         android:id="@+id/navTienda"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_tienda" />
     <item
         android:id="@+id/navPerfil"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_perfil"/>
+    <item
+        android:id="@+id/navPerfilAusp"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Perfil Auspiciador"/>
 
 </menu>

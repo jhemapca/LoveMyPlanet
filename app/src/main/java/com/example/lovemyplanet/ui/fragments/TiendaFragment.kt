@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lovemyplanet.TiendaAdapter
 import com.example.lovemyplanet.R
 import com.example.lovemyplanet.models.TiendaModel
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -25,6 +27,12 @@ class TiendaFragment : Fragment() {
         val db= FirebaseFirestore.getInstance()
         val lstTienda: ArrayList<TiendaModel> = ArrayList()
         val rvTienda: RecyclerView = view.findViewById(R.id.rvTienda)
+        val btv: Button = view.findViewById(R.id.btnComprar)
+        btv.setOnClickListener{
+            Snackbar.make(btv,"Agregado al carrito",Snackbar.LENGTH_LONG)
+                .setAction("Cancel"){}
+                .show()
+        }
         db.collection("productosTienda")
             .addSnapshotListener{snapshot,e->
                 if(e!=null)

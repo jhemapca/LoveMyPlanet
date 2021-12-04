@@ -16,6 +16,8 @@ import com.example.lovemyplanet.MainMenu
 import com.example.lovemyplanet.R
 import com.example.lovemyplanet.models.ActividadesMiniModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -32,6 +34,9 @@ class PrincipalFragment : Fragment() {
         val fabCrearAct=view.findViewById<FloatingActionButton>(R.id.fabCrearNuevaActividad)
         val db = FirebaseFirestore.getInstance()
         val lstActividades: ArrayList<ActividadesMiniModel> = ArrayList()
+        val dbU = FirebaseAuth.getInstance()
+        val user: FirebaseUser? = dbU.getCurrentUser()
+        val idUser:String = user!!.uid
 
 
         db.collection("actividades").addSnapshotListener{snapshot, e->
@@ -73,6 +78,16 @@ class PrincipalFragment : Fragment() {
         fabCrearAct.setOnClickListener {
             val intent = Intent(requireContext(), CrearActividadActivity::class.java)
             startActivity(intent)
+        }
+        db.collection("Voluntarios").document(idUser).addSnapshotListener{snapshot, e ->
+            if (e != null) {
+                Log.w("FIREBASE WARNING", "Listen failed.", e)
+                return@addSnapshotListener
+            }
+            if (snapshot != null && snapshot.exists()) {
+                fabCrearAct.visibility=View.INVISIBLE
+            }
+
         }
 
         return view

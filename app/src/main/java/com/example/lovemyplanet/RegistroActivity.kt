@@ -46,7 +46,7 @@ class RegistroActivity : AppCompatActivity() {
             dbU.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
                 val user: FirebaseUser? = dbU.getCurrentUser()
                 val idUser:String = user!!.uid
-                val datosVoluntario = VoluntarioModel(nombres, apellidos, direccion,fechaNac,genero,email,password,0)
+                val datosVoluntario = VoluntarioModel(nombres, apellidos, direccion,fechaNac,genero,email,password,0,false)
                 db.collection("Voluntarios").document(idUser).set(datosVoluntario).addOnSuccessListener {
                     Toast.makeText(this,"Nuevo Usuario registrado",Toast.LENGTH_LONG).show()
                     val intent = Intent(this,LoginActivity::class.java)

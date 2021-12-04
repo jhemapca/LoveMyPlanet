@@ -1,9 +1,11 @@
 package com.example.lovemyplanet
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.example.lovemyplanet.models.AuspiciadorModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -37,8 +39,14 @@ class RegistroAuspActivity : AppCompatActivity() {
             dbU.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
                 val user: FirebaseUser? = dbU.getCurrentUser()
                 val idUser:String = user!!.uid
-                val datosAusp=AuspiciadorModel()
-
+                val datosAusp=AuspiciadorModel(NombreEmpresa, Encargado, Telefono, Direccion, email, password, 20, true)
+                db.collection("Auspiciadores").document(idUser).set(datosAusp).addOnSuccessListener {
+                    Toast.makeText(this,"Nuevo Auspiciador registrado", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this,LoginActivity::class.java)
+                    startActivity(intent)
+                }.addOnFailureListener{
+                    Toast.makeText(this,"HA OCURRIDO UN ERROR",Toast.LENGTH_LONG).show()
+                }
             }
         }
 

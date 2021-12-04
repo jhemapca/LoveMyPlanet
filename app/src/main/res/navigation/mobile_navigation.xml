@@ -24,4 +24,9 @@
         android:name="com.example.lovemyplanet.ui.fragments.PerfilFragment"
         android:label="fragment_perfil"
         tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/navPerfilAusp"
+        android:name="com.example.lovemyplanet.ui.fragments.PerfilAuspFragment"
+        android:label="fragment_perfil_ausp"
+        tools:layout="@layout/fragment_perfil_ausp" />
 </navigation>
