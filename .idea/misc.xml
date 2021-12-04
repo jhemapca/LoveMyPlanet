@@ -15,6 +15,7 @@
         <entry key="..\:/aApps/LoveMyPlanet/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/aApps/LoveMyPlanet/app/src/main/res/layout/activity_main_menu.xml" value="0.19746376811594202" />
         <entry key="..\:/aApps/LoveMyPlanet/app/src/main/res/layout/activity_registro.xml" value="0.22" />
+        <entry key="..\:/aApps/LoveMyPlanet/app/src/main/res/layout/activity_registro_ausp.xml" value="0.18" />
         <entry key="..\:/aApps/LoveMyPlanet/app/src/main/res/layout/card_layout.xml" value="0.18" />
         <entry key="..\:/aApps/LoveMyPlanet/app/src/main/res/layout/dropdown_item.xml" value="0.19746376811594202" />
         <entry key="..\:/aApps/LoveMyPlanet/app/src/main/res/layout/fragment_calendario.xml" value="0.19746376811594202" />
@@ -23,6 +24,7 @@
         <entry key="..\:/aApps/LoveMyPlanet/app/src/main/res/layout/fragment_principal.xml" value="0.1598731884057971" />
         <entry key="..\:/aApps/LoveMyPlanet/app/src/main/res/layout/fragment_second.xml" value="0.1526268115942029" />
         <entry key="..\:/aApps/LoveMyPlanet/app/src/main/res/layout/fragment_tienda.xml" value="0.19010416666666666" />
+        <entry key="..\:/aApps/LoveMyPlanet/app/src/main/res/layout/item_tienda.xml" value="0.14175724637681159" />
         <entry key="..\:/aApps/LoveMyPlanet/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
       </map>
     </option>

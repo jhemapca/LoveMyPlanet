@@ -24,6 +24,10 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this,RegistroActivity::class.java)
             startActivity(intent)
         }
+        btnCrearCuentaAusp.setOnClickListener {
+            val intent = Intent(this,RegistroAuspActivity::class.java)
+            startActivity(intent)
+        }
 
         btnLogin.setOnClickListener{
             val correo=etCorreo.text.toString()
