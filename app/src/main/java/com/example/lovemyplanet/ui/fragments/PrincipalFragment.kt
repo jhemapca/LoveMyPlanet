@@ -19,7 +19,7 @@ import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 
 class PrincipalFragment : Fragment(), CustomAdapter.OnItemClickListener {
-
+    private var lstActividades: ArrayList<ActividadesMiniModel> = ArrayList()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,7 +30,6 @@ class PrincipalFragment : Fragment(), CustomAdapter.OnItemClickListener {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rvActividades)
         val fabCrearAct=view.findViewById<FloatingActionButton>(R.id.fabCrearNuevaActividad)
         val db = FirebaseFirestore.getInstance()
-        val lstActividades: ArrayList<ActividadesMiniModel> = ArrayList()
         val dbU = FirebaseAuth.getInstance()
         val user: FirebaseUser? = dbU.getCurrentUser()
         val idUser:String = user!!.uid
@@ -85,15 +84,13 @@ class PrincipalFragment : Fragment(), CustomAdapter.OnItemClickListener {
             if (snapshot != null && snapshot.exists()) {
                 fabCrearAct.visibility=View.INVISIBLE
             }
-
         }
-
-
         return view
     }
 
     override fun onItemClick(position: Int) {
         val intent = Intent(requireContext(), DetailActivity::class.java)
+        intent.putExtra("id",lstActividades[position].id)
         startActivity(intent)
     }
 }

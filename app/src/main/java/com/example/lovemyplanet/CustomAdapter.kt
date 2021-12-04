@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lovemyplanet.models.ActividadesMiniModel
 
-class CustomAdapter(private var lstActividades: List<ActividadesMiniModel>,
+class CustomAdapter(private var lstActividades: ArrayList<ActividadesMiniModel>,
                     private val listener:OnItemClickListener
 ):
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
