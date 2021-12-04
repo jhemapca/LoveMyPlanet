@@ -70,7 +70,7 @@
                 android:layout_marginRight="5dp"
                 android:background="@drawable/border_mid"
                 android:ems="10"
-                android:focusable="true"
+                android:focusable="false"
                 android:hint="Fecha de nacimiento"
                 android:inputType="textPersonName"
                 android:padding="5dp" />
