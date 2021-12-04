@@ -52,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_mid"
                 android:ems="10"
+                android:focusable="false"
                 android:hint="Fecha"
                 android:inputType="textPersonName"
                 android:padding="15dp" />
@@ -61,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_mid"
-                android:clickable="false"
+                android:clickable="true"
                 android:editable="false"
                 android:ems="10"
                 android:focusable="false"
@@ -74,7 +75,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_mid"
+                android:clickable="true"
                 android:ems="10"
+                android:focusable="false"
                 android:hint="Hora Finalización (ex: 7:00 A.M.)"
                 android:inputType="text"
                 android:padding="15dp" />

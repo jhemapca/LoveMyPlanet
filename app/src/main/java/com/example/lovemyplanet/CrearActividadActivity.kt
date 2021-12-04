@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.*
 import com.example.lovemyplanet.models.ActividadesFullModel
 import com.example.lovemyplanet.ui.fragments.DatePickerFragment
+import com.example.lovemyplanet.ui.fragments.TimePickerFragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -43,6 +44,15 @@ class CrearActividadActivity : AppCompatActivity() {
         }
         txtFecha.setOnClickListener{showDatePickerDialog()}
 
+        fun showTimePickerDialog(campo:EditText) {
+            fun onTimeSelected(time: String) {
+                campo.setText("$time")
+            }
+            val timePicker = TimePickerFragment { onTimeSelected(it) }
+            timePicker.show(supportFragmentManager, "timePicker")
+        }
+        txtHoraI.setOnClickListener { showTimePickerDialog(txtHoraI) }
+        txtHoraF.setOnClickListener { showTimePickerDialog(txtHoraF) }
 
         var spnTipoValue="Limpieza de Playa"
         spnTipo.onItemSelectedListener = object:AdapterView.OnItemSelectedListener{
