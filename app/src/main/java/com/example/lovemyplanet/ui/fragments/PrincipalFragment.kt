@@ -10,10 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.lovemyplanet.CrearActividadActivity
-import com.example.lovemyplanet.CustomAdapter
-import com.example.lovemyplanet.MainMenu
-import com.example.lovemyplanet.R
+import com.example.lovemyplanet.*
 import com.example.lovemyplanet.models.ActividadesMiniModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
@@ -21,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 
-class PrincipalFragment : Fragment() {
+class PrincipalFragment : Fragment(), CustomAdapter.OnItemClickListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,8 +51,9 @@ class PrincipalFragment : Fragment() {
                             dc.document.data["horaIni"].toString(),
                             dc.document.data["horaFin"].toString(),
                             dc.document.data["puntosPlanet"].toString().toInt()
+
                         ))
-                        recyclerView.adapter=CustomAdapter(lstActividades)
+                        recyclerView.adapter=CustomAdapter(lstActividades,this)
                     }DocumentChange.Type.MODIFIED ->{
                         lstActividades.add(ActividadesMiniModel(
                             dc.document.data["tipoActividad"].toString(),
@@ -64,7 +62,7 @@ class PrincipalFragment : Fragment() {
                             dc.document.data["horaFin"].toString(),
                             dc.document.data["puntosPlanet"].toString().toInt()
                         ))
-                        recyclerView.adapter=CustomAdapter(lstActividades)
+                        recyclerView.adapter=CustomAdapter(lstActividades,this)
                     }DocumentChange.Type.REMOVED ->{
                         Log.w("Firebase Warning","REMOVED")
                     }
@@ -90,6 +88,12 @@ class PrincipalFragment : Fragment() {
 
         }
 
+
         return view
+    }
+
+    override fun onItemClick(position: Int) {
+        val intent = Intent(requireContext(), DetailActivity::class.java)
+        startActivity(intent)
     }
 }

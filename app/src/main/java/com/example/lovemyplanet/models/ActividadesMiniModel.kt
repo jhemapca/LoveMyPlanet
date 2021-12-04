@@ -5,5 +5,6 @@ data class ActividadesMiniModel(
     val fecha:String="",
     val horaI:String="",
     val horaF:String="",
-    val puntosPlanet:Int=0
+    val puntosPlanet:Int=0,
+    val id:String=""
 )

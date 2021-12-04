@@ -113,6 +113,12 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/txtID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#CDF7B3" />
+
 
     </RelativeLayout>
 

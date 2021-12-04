@@ -10,5 +10,6 @@ data class ActividadesFullModel(
     val descripcion: String="",
     val actualParticipantes:Int=0,
     val Auspiciador: String="",
-    val lugar:String=""
+    val lugar:String="",
+    val key:String=""
 )

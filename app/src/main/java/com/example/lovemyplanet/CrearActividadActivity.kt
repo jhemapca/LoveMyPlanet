@@ -74,8 +74,9 @@ class CrearActividadActivity : AppCompatActivity() {
             }else{
                 puntos=4
             }
-            val nuevaActi = ActividadesFullModel(spnTipoValue,Fecha, HoraIni, HoraFin, puntos, MaxAforo, Desc, 0, Ausp,Lugar)
             val id: UUID = UUID.randomUUID()
+            val nuevaActi = ActividadesFullModel(spnTipoValue,Fecha, HoraIni, HoraFin, puntos, MaxAforo, Desc, 0, Ausp,Lugar,id.toString())
+
             db.collection("actividades").document(id.toString()).set(nuevaActi).addOnSuccessListener{
                 Toast.makeText(this,"Se ha registrado Nueva Actividad",Toast.LENGTH_LONG).show()
                 val intent = Intent(this, MainMenu::class.java)

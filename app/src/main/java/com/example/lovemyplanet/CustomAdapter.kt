@@ -9,22 +9,29 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lovemyplanet.models.ActividadesMiniModel
 
-class CustomAdapter(private var lstActividades: List<ActividadesMiniModel>):RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
-    inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-        var itemImage:ImageView
-        var itemTitle:TextView
-        var itemFecha:TextView
-        var itemPuntos:TextView
-        var itemHoraIni:TextView
-        var itemHoraFin:TextView
-        init {
-            itemImage=itemView.findViewById(R.id.imgActividad)
-            itemTitle=itemView.findViewById(R.id.txtTitulo)
-            itemFecha=itemView.findViewById(R.id.txtFecha)
-            itemPuntos=itemView.findViewById(R.id.txtPuntos)
-            itemHoraIni=itemView.findViewById(R.id.txtHoraIni)
-            itemHoraFin=itemView.findViewById(R.id.txtHoraFin)
+class CustomAdapter(private var lstActividades: List<ActividadesMiniModel>,
+                    private val listener:OnItemClickListener
+):
+    RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+    inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView), View.OnClickListener{
+        var itemImage:ImageView=itemView.findViewById(R.id.imgActividad)
+        var itemTitle:TextView=itemView.findViewById(R.id.txtTitulo)
+        var itemFecha:TextView=itemView.findViewById(R.id.txtFecha)
+        var itemPuntos:TextView=itemView.findViewById(R.id.txtPuntos)
+        var itemHoraIni:TextView=itemView.findViewById(R.id.txtHoraIni)
+        var itemHoraFin:TextView=itemView.findViewById(R.id.txtHoraFin)
+        var txtid:TextView=itemView.findViewById(R.id.txtID)
+        init{
+            itemView.setOnClickListener(this)
         }
+
+        override fun onClick(v: View?) {
+            val position:Int = adapterPosition
+            if(position!=RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,6 +46,7 @@ class CustomAdapter(private var lstActividades: List<ActividadesMiniModel>):Recy
         holder.itemHoraIni.text=itemActividad.horaI
         holder.itemHoraFin.text = itemActividad.horaF
         holder.itemPuntos.text = itemActividad.puntosPlanet.toString()
+        holder.txtid.text=itemActividad.id
         if(itemActividad.tipoActividad=="Limpieza de Playa") {
             holder.itemImage.setImageResource(R.drawable.playas)
         }else if(itemActividad.tipoActividad=="Limpieza de Parque"){
@@ -48,9 +56,15 @@ class CustomAdapter(private var lstActividades: List<ActividadesMiniModel>):Recy
         }else{
             holder.itemImage.setImageResource(R.drawable.mini_bg_login)
         }
+
     }
 
     override fun getItemCount(): Int {
         return lstActividades.size
     }
+
+    interface OnItemClickListener{
+        fun onItemClick(position: Int)
+    }
+
 }
