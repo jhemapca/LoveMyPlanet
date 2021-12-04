@@ -43,16 +43,50 @@ class RegistroActivity : AppCompatActivity() {
             val genero=radioButton.text.toString()
 
 
-            dbU.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
-                val user: FirebaseUser? = dbU.getCurrentUser()
-                val idUser:String = user!!.uid
-                val datosVoluntario = VoluntarioModel(nombres, apellidos, direccion,fechaNac,genero,email,password,0,false)
-                db.collection("Voluntarios").document(idUser).set(datosVoluntario).addOnSuccessListener {
-                    Toast.makeText(this,"Nuevo Usuario registrado",Toast.LENGTH_LONG).show()
-                    val intent = Intent(this,LoginActivity::class.java)
-                    startActivity(intent)
-                }.addOnFailureListener {
-                    Toast.makeText(this,"HA OCURRIDO UN ERROR",Toast.LENGTH_LONG).show()
+            if(nombres.length==0){
+                etnombres.requestFocus()
+                etnombres.setError("Ingrese datos")
+            }else if(apellidos.length==0){
+                etapellidos.requestFocus()
+                etapellidos.setError("Ingrese datos")
+            }else if(direccion.length==0){
+                etDirección.requestFocus()
+                etDirección.setError("Ingrese datos")
+            }else if(fechaNac.length==0){
+                etBirth.requestFocus()
+                etBirth.setError("Ingrese datos")
+            }else if(email.length==0){
+                etCorreo.requestFocus()
+                etCorreo.setError("Ingrese email")
+            }else if(password.length>6){
+                etContraseña.requestFocus()
+                etContraseña.setError("La contraseña debe tener una longitud mayor a 6")
+            }else {
+
+
+                dbU.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+                    val user: FirebaseUser? = dbU.getCurrentUser()
+                    val idUser: String = user!!.uid
+                    val datosVoluntario = VoluntarioModel(
+                        nombres,
+                        apellidos,
+                        direccion,
+                        fechaNac,
+                        genero,
+                        email,
+                        password,
+                        0,
+                        false
+                    )
+                    db.collection("Voluntarios").document(idUser).set(datosVoluntario)
+                        .addOnSuccessListener {
+                            Toast.makeText(this, "Nuevo Usuario registrado", Toast.LENGTH_LONG)
+                                .show()
+                            val intent = Intent(this, LoginActivity::class.java)
+                            startActivity(intent)
+                        }.addOnFailureListener {
+                        Toast.makeText(this, "HA OCURRIDO UN ERROR", Toast.LENGTH_LONG).show()
+                    }
                 }
             }
 
