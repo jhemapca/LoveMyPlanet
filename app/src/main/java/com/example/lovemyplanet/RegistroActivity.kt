@@ -29,40 +29,35 @@ class RegistroActivity : AppCompatActivity() {
         val btnReg:Button=findViewById(R.id.btnRegistrar)
         btnReg.setOnClickListener {
 
+            if(etnombres.text.toString().isEmpty()){
+                etnombres.requestFocus()
+                etnombres.setError("Ingrese nombre")
+            }else if(etapellidos.text.toString().isEmpty()){
+                etapellidos.requestFocus()
+                etapellidos.setError("Ingrese apellidos")
+            }else if(etDirección.text.toString().isEmpty()){
+                etDirección.requestFocus()
+                etDirección.setError("Ingrese direccion")
+            }else if(etBirth.text.toString().isEmpty()){
+                etBirth.requestFocus()
+                etBirth.setError("Ingrese fecha nacimiento")
+            }else if(etCorreo.text.toString().isEmpty()){
+                etCorreo.requestFocus()
+                etCorreo.setError("Ingrese email")
+            }else if(etContraseña.text.toString().length<6){
+                etContraseña.requestFocus()
+                etContraseña.setError("La contraseña debe tener una longitud mayor a 6")
+            }else {
+
             val intSelectedButton: Int = rgSexo!!.checkedRadioButtonId
             val radioButton:RadioButton=findViewById(intSelectedButton)
-
-
             val email= etCorreo.text.toString()
             val password = etContraseña.text.toString()
-
             val nombres=etnombres.text.toString()
             val apellidos=etapellidos.text.toString()
             val direccion=etDirección.text.toString()
             val fechaNac=etBirth.text.toString()
             val genero=radioButton.text.toString()
-
-
-            if(nombres.length==0){
-                etnombres.requestFocus()
-                etnombres.setError("Ingrese datos")
-            }else if(apellidos.length==0){
-                etapellidos.requestFocus()
-                etapellidos.setError("Ingrese datos")
-            }else if(direccion.length==0){
-                etDirección.requestFocus()
-                etDirección.setError("Ingrese datos")
-            }else if(fechaNac.length==0){
-                etBirth.requestFocus()
-                etBirth.setError("Ingrese datos")
-            }else if(email.length==0){
-                etCorreo.requestFocus()
-                etCorreo.setError("Ingrese email")
-            }else if(password.length>6){
-                etContraseña.requestFocus()
-                etContraseña.setError("La contraseña debe tener una longitud mayor a 6")
-            }else {
-
 
                 dbU.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                     val user: FirebaseUser? = dbU.getCurrentUser()

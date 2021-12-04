@@ -28,27 +28,46 @@ class RegistroAuspActivity : AppCompatActivity() {
         val btnReg:Button=findViewById(R.id.btnRegistrarAusp)
 
         btnReg.setOnClickListener {
-            val email= etCorreo.text.toString()
-            val password = etContra.text.toString()
+            if(etNombreEmp.text.toString().isEmpty()){
+                etNombreEmp.requestFocus()
+                etNombreEmp.setError("Ingrese nombre de empresa")
+            }else if(etNombreEncargado.text.toString().isEmpty()){
+                etNombreEncargado.requestFocus()
+                etNombreEncargado.setError("Ingrese nombre de encargado")
+            }else if(etTelefono.text.toString().isEmpty()){
+                etTelefono.requestFocus()
+                etTelefono.setError("Ingrese numero telefonico")
+            }else if(etDireccion.text.toString().isEmpty()){
+                etDireccion.requestFocus()
+                etDireccion.setError("Ingrese una dirección")
+            }else if(etCorreo.text.toString().isEmpty()){
+                etCorreo.requestFocus()
+                etCorreo.setError("Ingrese una dirección email")
+            }else if(etContra.text.toString().length<6){
+                etContra.requestFocus()
+                etContra.setError("La contraseña debe tener más de 6 caracteres")
+            }else{
+                val email= etCorreo.text.toString()
+                val password = etContra.text.toString()
 
-            val NombreEmpresa = etNombreEmp.text.toString()
-            val Encargado = etNombreEncargado.text.toString()
-            val Telefono = etTelefono.text.toString()
-            val Direccion = etDireccion.text.toString()
+                val NombreEmpresa = etNombreEmp.text.toString()
+                val Encargado = etNombreEncargado.text.toString()
+                val Telefono = etTelefono.text.toString()
+                val Direccion = etDireccion.text.toString()
 
-            dbU.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
-                val user: FirebaseUser? = dbU.getCurrentUser()
-                val idUser:String = user!!.uid
-                val datosAusp=AuspiciadorModel(NombreEmpresa, Encargado, Telefono, Direccion, email, password, 20, true)
-                db.collection("Auspiciadores").document(idUser).set(datosAusp).addOnSuccessListener {
-                    Toast.makeText(this,"Nuevo Auspiciador registrado", Toast.LENGTH_LONG).show()
-                    val intent = Intent(this,LoginActivity::class.java)
-                    startActivity(intent)
-                }.addOnFailureListener{
-                    Toast.makeText(this,"HA OCURRIDO UN ERROR",Toast.LENGTH_LONG).show()
+                dbU.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
+                    val user: FirebaseUser? = dbU.getCurrentUser()
+                    val idUser:String = user!!.uid
+                    val datosAusp=AuspiciadorModel(NombreEmpresa, Encargado, Telefono, Direccion, email, password, 20, true)
+                    db.collection("Auspiciadores").document(idUser).set(datosAusp).addOnSuccessListener {
+                        Toast.makeText(this,"Nuevo Auspiciador registrado", Toast.LENGTH_LONG).show()
+                        val intent = Intent(this,LoginActivity::class.java)
+                        startActivity(intent)
+                    }.addOnFailureListener{
+                        Toast.makeText(this,"HA OCURRIDO UN ERROR",Toast.LENGTH_LONG).show()
+                    }
                 }
             }
         }
-
     }
 }
