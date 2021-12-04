@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CrearActividadActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:fontFamily="@font/exo_2_bold"
+        android:padding="10px"
+        android:text="REGISTRAR ACTIVIDAD SOCIAL"
+        android:textAlignment="center"
+        android:textSize="34sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <Spinner
+                android:id="@+id/spnTipoAct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_top"
+                android:entries="@array/TiposAct"
+                android:padding="20px" />
+
+            <EditText
+                android:id="@+id/txtMaxPersonasNewAct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_mid"
+                android:ems="10"
+                android:hint="Maximo de personas para actividad"
+                android:inputType="number"
+                android:padding="15dp" />
+
+            <EditText
+                android:id="@+id/txtFechaNewAct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_mid"
+                android:ems="10"
+                android:hint="Fecha"
+                android:inputType="textPersonName"
+                android:padding="15dp" />
+
+            <EditText
+                android:id="@+id/txtHoraIniNewAct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_mid"
+                android:ems="10"
+                android:hint="Hora de Inicio (ex: 7:00 A.M.)"
+                android:inputType="text"
+                android:padding="15dp" />
+
+            <EditText
+                android:id="@+id/txtHoraFinNewAct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_mid"
+                android:ems="10"
+                android:hint="Hora Finalización (ex: 7:00 A.M.)"
+                android:inputType="text"
+                android:padding="15dp" />
+
+            <EditText
+                android:id="@+id/txtLugarNewAct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_mid"
+                android:ems="10"
+                android:hint="Lugar de la actividad"
+                android:inputType="textPersonName"
+                android:padding="15dp" />
+
+            <EditText
+                android:id="@+id/txtDescriptionNewAct"
+                android:layout_width="match_parent"
+                android:layout_height="111dp"
+                android:background="@drawable/border_bottom"
+                android:ems="10"
+                android:hint="Descripción de la actividad"
+                android:inputType="textMultiLine|textPersonName"
+                android:padding="15dp"
+                android:textAlignment="textStart" />
+
+            <Button
+                android:id="@+id/btnSendActividadNueva"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_style"
+                android:text="registrar" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

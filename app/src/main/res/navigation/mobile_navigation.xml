@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navPrincipal">
+    <fragment
+        android:id="@+id/navPrincipal"
+        android:name="com.example.lovemyplanet.ui.fragments.PrincipalFragment"
+        android:label="fragment_principal"
+        tools:layout="@layout/fragment_principal" />
+    <fragment
+        android:id="@+id/navCalendario"
+        android:name="com.example.lovemyplanet.ui.fragments.CalendarioFragment"
+        android:label="fragment_calendario"
+        tools:layout="@layout/fragment_calendario" />
+    <fragment
+        android:id="@+id/navTienda"
+        android:name="com.example.lovemyplanet.ui.fragments.TiendaFragment"
+        android:label="fragment_tienda"
+        tools:layout="@layout/fragment_tienda" />
+    <fragment
+        android:id="@+id/navPerfil"
+        android:name="com.example.lovemyplanet.ui.fragments.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
+</navigation>
